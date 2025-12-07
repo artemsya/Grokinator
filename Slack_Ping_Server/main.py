@@ -1,9 +1,13 @@
 from flask import Flask, request, jsonify
 import requests
 import json
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
-SLACK_WEBHOOK_URL = "https://hooks.slack.com/services/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"
+SLACK_WEBHOOK_URL = os.getenv('SLACK_WEBHOOK_URL')
 
 @app.route('/trigger-ping', methods=['POST'])
 def trigger_slack_ping():
